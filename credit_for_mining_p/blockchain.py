@@ -161,6 +161,16 @@ class Blockchain(object):
     
         return False
 
+    def broadcast_new_block(self, block):
+        neighbors = self.nodes
+        post_data = {'block': block}
+
+        for node in neighbors:
+            response = requests.post(f'http://{node}/block/new', json=post_data)
+            if response.status_code != 200:
+                print('Error broadcasting new block')
+                pass
+
 # Instantiate our Node
 app = Flask(__name__)
 
