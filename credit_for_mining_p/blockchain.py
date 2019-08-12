@@ -2,7 +2,7 @@ import hashlib
 import json
 from time import time
 from uuid import uuid4
-# from selenium import webdriver
+from urllib.parse import urlparse
 import sys
 
 from flask import Flask, jsonify, request, redirect, url_for, flash, render_template
@@ -87,6 +87,15 @@ class Blockchain(object):
     def last_block(self):
         return self.chain[-1]
 
+    def proof_of_work(self, last_block_string):
+        proof = 0
+
+        while self.valid_proof(blockchain.last_block['previous_hash'], proof) is False:
+
+            proof += 1
+
+        return proof    
+
 
 
     @staticmethod
@@ -124,6 +133,10 @@ class Blockchain(object):
             current_index += 1
 
         return True
+
+    def register_node(self, address):
+        parsed_url = urlparse(address)
+        self.nodes.add(parsed_url.nettloc)    
 
 
 # Instantiate our Node
