@@ -3,5 +3,6 @@
         "activityBar.background": "#2E1D71",
         "titleBar.activeBackground": "#40299E",
         "titleBar.activeForeground": "#FAF9FD"
-    }
+    },
+    "python.pythonPath": "C:\\Users\\Family\\.virtualenvs\\Blockchain-tp0TGHJs\\Scripts\\python.exe"
 }
